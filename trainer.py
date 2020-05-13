@@ -23,7 +23,7 @@ from iterator import read_squad_examples, convert_examples_to_features
 from model import DomainQA
 from utils import eta, progress_bar
 
-from model import EWCoverQA
+#from model import EWCoverQA
 
 
 def get_opt(param_optimizer, num_train_optimization_steps, args):
@@ -84,7 +84,7 @@ class BaseTrainer(object):
                                     world_size=self.args.world_size, rank=self.args.rank)
 
         # Load baseline model
-        self.model = EWCoverQA.from_pretrained(self.args.bert_model)
+        self.model = BertForQuestionAnswering.from_pretrained(self.args.bert_model)
 
         if self.args.load_model is not None:
             print("Loading model from ", self.args.load_model)
